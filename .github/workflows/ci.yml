@@ -1,0 +1,25 @@
+name: Run Tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Можно сменить на windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          .\venv\Scripts\activate
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          .\venv\Scripts\activate
+          pytest
