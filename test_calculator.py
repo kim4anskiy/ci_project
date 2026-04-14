@@ -6,3 +6,22 @@ def test_add():
 	assert add(0, 0) == 0
 	assert add(14, -8) == 6
 	assert add(192, 279) == 471
+
+def test_subtract():
+    assert subtract(10, 5) == 5
+    assert subtract(-1, 1) == -2
+    assert subtract(0, 5) == -5
+
+def test_multiply():
+    assert multiply(2, 3) == 6
+    assert multiply(-2, 3) == -6
+    assert multiply(0, 100) == 0
+
+def test_divide():
+    assert divide(10, 2) == 5
+    assert divide(-6, 3) == -2
+    assert divide(5, 2) == 2.5
+    
+def test_divide_by_zero():
+    with pytest.raises(ValueError, match="Деление на ноль невозможно"):
+        divide(10, 0)
